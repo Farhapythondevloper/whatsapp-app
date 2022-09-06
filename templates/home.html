@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="container my-3">
+        <h3>Please Enter Mobile Number and Message</h3>
+        <hr>
+        <form action="{% url 'SendData' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group mt-4">
+                <label for="Phone">Enter Phone Number</label>
+                <input type="Phone" required autofocus class="form-control"
+                name="Phone" id="Phone" aria-describedby="Phone" placeholder="Please enter 10 digit phone number">
+            </div>
+            <div class="form-group">
+                <label for="Message">Enter Message</label>
+                 <textarea name="Message" id="Message" cols="30" rows="5" class="form-control" required placeholder="Write Message"></textarea>
+            </div>
+            <input type="submit" value="send" class="btn btn-primary btn-lg">
+            <a href="/" class="btn btn-secondary btn-lg ml-5">Clear</a>{{msg}}
+        </form>
+    </div>
+    {% endblock body %}
